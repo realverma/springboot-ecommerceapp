@@ -28,4 +28,7 @@ public class ResponseStructure<T> {
 	public void setStatusCode(int statusCode) {
 		this.statusCode = statusCode;
 	}
+
+    public void setBody(T merchant) {
+    }
 }

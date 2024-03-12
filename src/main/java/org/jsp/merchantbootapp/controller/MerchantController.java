@@ -2,6 +2,7 @@ package org.jsp.merchantbootapp.controller;
 
 import java.util.List;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.jsp.merchantbootapp.model.Merchant;
 import org.jsp.merchantbootapp.dto.ResponseStructure;
 import org.jsp.merchantbootapp.service.MerchantService;
@@ -19,8 +20,8 @@ public class MerchantController {
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public ResponseStructure<Merchant> saveMerchant(@RequestBody Merchant merchant) {
-		return merchantService.saveMerchant(merchant);
+	public ResponseStructure<Merchant> saveMerchant(@RequestBody Merchant merchant, HttpServletRequest request) {
+		return merchantService.saveMerchant(merchant, request);
 	}
 
 	@PutMapping
@@ -54,4 +55,15 @@ public class MerchantController {
 	public ResponseEntity<ResponseStructure<List<Merchant>>> findByName(@PathVariable String name) {
 		return merchantService.findByName(name);
 	}
+
+	@GetMapping("/activate")
+	public ResponseEntity<ResponseStructure<String>> activate(@RequestParam String token){
+		return merchantService.activate(token);
+	}
+
+
+
+
+
+
 }

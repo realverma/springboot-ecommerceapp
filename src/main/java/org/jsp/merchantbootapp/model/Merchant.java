@@ -29,6 +29,7 @@ public class Merchant {
 	private String password;
 
 	private String status;
+	private String token;
 	@OneToMany(mappedBy = "merchant")
 	private List<Product> products;
 
