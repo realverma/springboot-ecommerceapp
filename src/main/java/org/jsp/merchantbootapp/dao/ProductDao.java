@@ -3,7 +3,8 @@ package org.jsp.merchantbootapp.dao;
 import java.util.List;
 import java.util.Optional;
 
-import org.jsp.merchantbootapp.dto.Product;
+import org.jsp.merchantbootapp.model.Merchant;
+import org.jsp.merchantbootapp.model.Product;
 import org.jsp.merchantbootapp.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,6 +34,9 @@ public class ProductDao {
 		return productRepository.findByMerchantId(merchant_id);
 	}
 
+	public List<Product> findAll() {
+		return productRepository.findAll();
+	}
 	public List<Product> findByMerchant(long phone, String password) {
 		return productRepository.findByMerchantPhone$Password(phone, password);
 	}

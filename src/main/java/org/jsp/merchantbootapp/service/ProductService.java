@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.jsp.merchantbootapp.dao.MerchantDao;
 import org.jsp.merchantbootapp.dao.ProductDao;
 import org.jsp.merchantbootapp.model.Merchant;
-import org.jsp.merchantbootapp.dto.Product;
+import org.jsp.merchantbootapp.model.Product;
 import org.jsp.merchantbootapp.dto.ResponseStructure;
 import org.jsp.merchantbootapp.exception.IdNotFoundException;
 import org.jsp.merchantbootapp.exception.InvalidCredentialsException;
@@ -93,6 +93,14 @@ public class ProductService {
 		throw new ProductNotFoundException("No Product for the  category " + category);
 	}
 
+	public ResponseStructure<List<Product>> findAll() {
+		ResponseStructure<List<Product>> structure = new ResponseStructure<>();
+		structure.setMessage("List of Products");
+		structure.setData(productDao.findAll());
+		structure.setStatusCode(HttpStatus.OK.value());
+		return structure;
+	}
+
 	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchantId(int id) {
 		List<Product> products = productDao.findByMerchantId(id);
 		ResponseStructure<List<Product>> structure = new ResponseStructure<>();
@@ -116,4 +124,6 @@ public class ProductService {
 		}
 		throw new InvalidCredentialsException("No Products for entered phone and password");
 	}
+
+
 }

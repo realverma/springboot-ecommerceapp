@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Data;
-import org.jsp.merchantbootapp.dto.Product;
 
 @Entity
 @Data
@@ -32,9 +31,5 @@ public class Merchant {
 	private String token;
 	@OneToMany(mappedBy = "merchant")
 	private List<Product> products;
-
-	public List<Product> getProducts() {
-		return products;
-	}
 
 }

@@ -2,7 +2,7 @@ package org.jsp.merchantbootapp.repository;
 
 import java.util.List;
 
-import org.jsp.merchantbootapp.dto.Product;
+import org.jsp.merchantbootapp.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
