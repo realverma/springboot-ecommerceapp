@@ -2,7 +2,9 @@ package org.jsp.merchantbootapp.service;
 
 import org.jsp.merchantbootapp.dao.UserDao;
 import org.jsp.merchantbootapp.dto.ResponseStructure;
+import org.jsp.merchantbootapp.exception.IdNotFoundException;
 import org.jsp.merchantbootapp.exception.InvalidCredentialsException;
+import org.jsp.merchantbootapp.model.Merchant;
 import org.jsp.merchantbootapp.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,18 @@ public class UserService
         structure.setData(userDao.saveUser(user));
         structure.setStatusCode(HttpStatus.CREATED.value());
         return structure;
+    }
+
+    public ResponseEntity<ResponseStructure<User>> findById(int id) {
+        Optional<User> recUser = userDao.findById(id);
+        ResponseStructure<User> structure = new ResponseStructure<>();
+        if (recUser.isPresent()) {
+            structure.setData(recUser.get());
+            structure.setMessage("User Found");
+            structure.setStatusCode(HttpStatus.OK.value());
+            return new ResponseEntity<ResponseStructure<User>>(structure, HttpStatus.OK);
+        }
+        throw new IdNotFoundException();
     }
 
     public ResponseStructure<List<User>> findAll() {

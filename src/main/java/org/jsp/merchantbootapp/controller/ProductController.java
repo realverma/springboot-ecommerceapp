@@ -2,7 +2,6 @@ package org.jsp.merchantbootapp.controller;
 
 import java.util.List;
 
-import org.jsp.merchantbootapp.model.Merchant;
 import org.jsp.merchantbootapp.model.Product;
 import org.jsp.merchantbootapp.dto.ResponseStructure;
 import org.jsp.merchantbootapp.service.ProductService;

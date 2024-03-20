@@ -2,7 +2,6 @@ package org.jsp.merchantbootapp.controller;
 
 import org.jsp.merchantbootapp.dto.ResponseStructure;
 import org.jsp.merchantbootapp.model.User;
-import org.jsp.merchantbootapp.model.User;
 import org.jsp.merchantbootapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

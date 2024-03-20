@@ -3,6 +3,8 @@ package org.jsp.merchantbootapp.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 public class User {
@@ -19,4 +21,6 @@ public class User {
     private String password;
     @Column(nullable = false)
     private String gender;
+    @OneToMany(mappedBy = "user")
+    private List<Address> addresses;
 }

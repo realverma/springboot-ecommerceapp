@@ -1,5 +1,6 @@
 package org.jsp.merchantbootapp.dao;
 
+import org.jsp.merchantbootapp.model.Merchant;
 import org.jsp.merchantbootapp.model.User;
 import org.jsp.merchantbootapp.model.User;
 import org.jsp.merchantbootapp.repository.UserRepository;
@@ -17,6 +18,10 @@ public class UserDao {
 
     public User saveUser(User user) {
         return userRepository.save(user);
+    }
+
+    public Optional<User> findById(int id) {
+        return userRepository.findById(id);
     }
 
     public List<User> findAll() {
