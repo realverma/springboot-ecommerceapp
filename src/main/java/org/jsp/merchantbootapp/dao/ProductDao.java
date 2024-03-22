@@ -40,4 +40,13 @@ public class ProductDao {
 	public List<Product> findByMerchant(long phone, String password) {
 		return productRepository.findByMerchantPhone$Password(phone, password);
 	}
+
+	public boolean deleteById(int id) {
+		Optional<Product> recProduct = findById(id);
+		if (recProduct.isPresent()) {
+			productRepository.delete(recProduct.get());
+			return true;
+		}
+		return false;
+	}
 }

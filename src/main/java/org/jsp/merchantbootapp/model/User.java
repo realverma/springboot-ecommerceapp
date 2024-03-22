@@ -23,4 +23,11 @@ public class User {
     private String gender;
     @OneToMany(mappedBy = "user")
     private List<Address> addresses;
+
+    @OneToMany
+    private List<Product> cart;
+    @JoinTable(name = "user_wishlist", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "product_id") })
+    @OneToMany
+    private List<Product> wishList;
 }

@@ -19,7 +19,7 @@ public class ProductController {
 
 	@PostMapping("/{merchant_id}")
 	public ResponseEntity<ResponseStructure<Product>> saveProduct(@RequestBody Product product,
-			@PathVariable(name = "merchant_id") int merchant_id) {
+																  @PathVariable(name = "merchant_id") int merchant_id) {
 		return productService.saveProduct(product, merchant_id);
 	}
 
@@ -50,7 +50,7 @@ public class ProductController {
 		return productService.findByCategory(category);
 	}
 
-	@GetMapping("/by-merchant/{merchant_id}")
+	@GetMapping("/m/{merchant_id}")
 	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchant(
 			@PathVariable(name = "merchant_id") int merchant_id) {
 		return productService.findByMerchantId(merchant_id);
@@ -58,7 +58,24 @@ public class ProductController {
 
 	@PostMapping("/by-merchant")
 	public ResponseEntity<ResponseStructure<List<Product>>> findByMerchant(@RequestParam long phone,
-			@RequestParam String password) {
+																		   @RequestParam String password) {
 		return productService.findByMerchant(phone, password);
+	}
+
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<ResponseStructure<String>> deleteById(@PathVariable(name = "id") int id) {
+		return productService.deleteById(id);
+	}
+
+	@PutMapping("/{user_id}/{product_id}")
+	public ResponseEntity<ResponseStructure<String>> addToCart(@PathVariable int user_id,
+															   @PathVariable int product_id) {
+		return productService.addToCart(user_id, product_id);
+	}
+
+	@PutMapping("/wishlist/{user_id}/{product_id}")
+	public ResponseEntity<ResponseStructure<String>> addToWishList(@PathVariable int user_id,
+																   @PathVariable int product_id) {
+		return productService.addToWishList(user_id, product_id);
 	}
 }
